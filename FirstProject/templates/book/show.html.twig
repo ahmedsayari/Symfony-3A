@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails livre{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Détails du livre</h1>
+
+    <ul class="list-group">
+        <li class="list-group-item"><strong>ID:</strong> {{ book.id }}</li>
+        <li class="list-group-item"><strong>Titre:</strong> {{ book.title }}</li>
+        <li class="list-group-item"><strong>Auteur:</strong> {{ book.author ? book.author.username : '-' }}</li>
+        <li class="list-group-item"><strong>Publication:</strong> {{ book.publicationDate ? book.publicationDate|date('Y-m-d') : '-' }}</li>
+        <li class="list-group-item"><strong>Publié:</strong> {{ book.enabled ? 'Yes' : 'No' }}</li>
+    </ul>
+
+    <div class="mt-3">
+        <a class="btn btn-primary" href="{{ path('app_book_edit', {'id': book.id}) }}">Edit</a>
+        <a class="btn btn-link" href="{{ path('app_book_index') }}">Retour</a>
+    </div>
+</div>
+{% endblock %}

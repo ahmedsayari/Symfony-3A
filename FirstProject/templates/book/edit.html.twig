@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un livre{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Modifier le livre #{{ book.id }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.publicationDate) }}
+        {{ form_row(form.enabled) }}
+        {{ form_row(form.save) }}
+    {{ form_end(form) }}
+
+    <a class="btn btn-link mt-3" href="{{ path('app_book_index') }}">Retour à la liste</a>
+</div>
+{% endblock %}

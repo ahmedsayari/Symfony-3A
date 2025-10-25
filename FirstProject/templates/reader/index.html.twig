@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des lecteurs{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>👥 Liste des lecteurs</h1>
+        <a class="btn btn-primary" href="{{ path('app_reader_new') }}">Créer un lecteur</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for reader in readers %}
+                <tr>
+                    <td>{{ reader.id }}</td>
+                    <td>{{ reader.username }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_reader_show', {'id': reader.id}) }}">Show</a>
+                        <a class="btn btn-sm btn-outline-primary" href="{{ path('app_reader_edit', {'id': reader.id}) }}">Edit</a>
+                        <form method="post" action="{{ path('app_reader_delete', {'id': reader.id}) }}" style="display:inline-block" onsubmit="return confirm('Delete this reader?');">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-center text-muted py-4">Aucun lecteur trouvé.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

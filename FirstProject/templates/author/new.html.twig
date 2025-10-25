@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un auteur{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Créer un auteur</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.save) }}
+    {{ form_end(form) }}
+
+    <a class="btn btn-link mt-3" href="{{ path('app_author_index') }}">Retour à la liste</a>
+</div>
+{% endblock %}
